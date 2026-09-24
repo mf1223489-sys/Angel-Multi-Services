@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angel Multiservice</title>
+<style>
+  :root {
+    --cyan: #0096d6;
+    --magenta: #e6007e;
+    --yellow: #ffd500;
+    --ink: #1b1f3b;
+    --paper: #ffffff;
+    --mist: #eef2f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Avenir Next", "Century Gothic", "Trebuchet MS", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 3.5rem 1.5rem 4rem;
+    min-height: 31rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .inks { position: absolute; inset: 0; pointer-events: none; }
+  .ink {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+    width: 12rem; height: 12rem;
+    animation: register 1.4s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .ink.c { background: var(--cyan);    top: -2rem; right: 5.5rem; --dx: -2.5rem; --dy: -1.5rem; }
+  .ink.m { background: var(--magenta); top: 0.5rem; right: -1.5rem; --dx: 3rem;  --dy: -1rem; }
+  .ink.y { background: var(--yellow);  top: 3.5rem; right: 2.5rem;  --dx: 0rem;  --dy: 3rem; }
+  @keyframes register {
+    from { transform: translate(var(--dx), var(--dy)); opacity: .0; }
+    to   { transform: translate(0, 0); opacity: 1; }
+  }
+  .hero-text { position: relative; max-width: 34rem; }
+  h1 {
+    font-size: clamp(2.6rem, 11vw, 4.5rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .hero p {
+    margin-top: 1rem;
+    font-size: 1.15rem;
+    max-width: 26rem;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: .85rem 1.4rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 2rem;
+  }
+  .cta:hover { background: var(--magenta); }
+
+  /* Services */
+  section { padding: 3rem 1.5rem; max-width: 44rem; margin: 0 auto; }
+  h2 { font-size: 1.8rem; line-height: 1.15; letter-spacing: -0.01em; }
+  .lead { margin-top: .5rem; color: #4a5068; }
+  ul.services { list-style: none; margin-top: 1.75rem; }
+  .services li {
+    display: grid;
+    grid-template-columns: .5rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--mist);
+  }
+  .services li:last-child { border-bottom: 1px solid var(--mist); }
+  .bar { border-radius: 1rem; }
+  .services li:nth-child(4n+1) .bar { background: var(--cyan); }
+  .services li:nth-child(4n+2) .bar { background: var(--magenta); }
+  .services li:nth-child(4n+3) .bar { background: var(--yellow); }
+  .services li:nth-child(4n+4) .bar { background: var(--ink); }
+  .services h3 { font-size: 1.2rem; }
+  .services p { color: #4a5068; font-size: .98rem; }
+  .more { margin-top: 1.25rem; font-weight: 600; }
+
+  /* Contact */
+  .contact { background: var(--mist); max-width: none; }
+  .contact-inner { max-width: 44rem; margin: 0 auto; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+  .actions a {
+    padding: .85rem 1.4rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .actions a.alt { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); }
+  .actions a:hover { background: var(--magenta); color: var(--paper); border-color: var(--magenta); }
+  footer { padding: 1.5rem; text-align: center; font-size: .9rem; color: #4a5068; }
+
+  @media (min-width: 700px) {
+    .hero { padding: 5rem 3rem 5rem; min-height: 32rem; }
+    .ink { width: 26rem; height: 26rem; }
+    .ink.c { right: 22rem; top: -4rem; }
+    .ink.m { right: 8rem; top: 2rem; }
+    .ink.y { right: 16rem; top: 9rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ink { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inks" aria-hidden="true">
+    <div class="ink c"></div>
+    <div class="ink m"></div>
+    <div class="ink y"></div>
+  </div>
+  <div class="hero-text">
+    <h1>Angel Multiservice</h1>
+    <p>Téléphones, impression, badges, photo : tout au même endroit.</p>
+    <a class="cta" href="#services">Voir nos services</a>
+  </div>
+</header>
+
+<main>
+  <section id="services">
+    <h2>Nos services</h2>
+    <p class="lead">Ce que nous faisons pour vous, sur place.</p>
+    <ul class="services">
+      <li><span class="bar"></span><div><h3>Vente de téléphones</h3><p>Des téléphones pour tous les besoins.</p></div></li>
+      <li><span class="bar"></span><div><h3>Recharge de téléphone</h3><p>Rechargez votre téléphone rapidement.</p></div></li>
+      <li><span class="bar"></span><div><h3>Impression</h3><p>Vos documents imprimés proprement.</p></div></li>
+      <li><span class="bar"></span><div><h3>Copie couleur et noir et blanc</h3><p>Des copies nettes, en couleur ou en noir et blanc.</p></div></li>
+      <li><span class="bar"></span><div><h3>Traitement de texte</h3><p>Nous saisissons et mettons en forme vos textes.</p></div></li>
+      <li><span class="bar"></span><div><h3>Conception</h3><p>Nous créons vos documents et visuels.</p></div></li>
+      <li><span class="bar"></span><div><h3>Badges</h3><p>Des badges personnalisés pour votre équipe ou votre événement.</p></div></li>
+      <li><span class="bar"></span><div><h3>Studio photo</h3><p>Photos d'identité et portraits en studio.</p></div></li>
+    </ul>
+    <p class="more">Et d'autres services : demandez-nous.</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <h2>Nous contacter</h2>
+      <p class="lead" id="contact-text">Passez nous voir pour un service ou un tarif.</p>
+      <div class="actions" id="actions"></div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> Angel Multiservice</footer>
+
+<script>
+  // À compléter : numéro au format international, sans espaces ni « + » (ex. 50900000000)
+  const CONFIG = {
+    phone: "",
+    whatsapp: "",
+    address: ""
+  };
+
+  const actions = document.getElementById("actions");
+  if (CONFIG.phone) {
+    const a = document.createElement("a");
+    a.href = "tel:+" + CONFIG.phone;
+    a.textContent = "Appeler";
+    actions.appendChild(a);
+  }
+  if (CONFIG.whatsapp) {
+    const a = document.createElement("a");
+    a.href = "https://wa.me/" + CONFIG.whatsapp;
+    a.textContent = "Écrire sur WhatsApp";
+    a.className = "alt";
+    actions.appendChild(a);
+  }
+  if (CONFIG.address) {
+    document.getElementById("contact-text").textContent = CONFIG.address;
+  }
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
